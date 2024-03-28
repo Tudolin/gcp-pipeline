@@ -1,21 +1,23 @@
-# ytb_oauth.py
-
 import json
 
-import requests  # Importando a biblioteca requests
+import requests
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
 
 class OAuth:
+    """Handles OAuth authentication and token management for accessing YouTube Analytics API."""
+    
     def __init__(self, client_id, client_secret):
+        """Initializes the OAuth object with the provided client ID and client secret."""
         self.client_id = client_id
         self.client_secret = client_secret
         self.scopes = ["https://www.googleapis.com/auth/yt-analytics.readonly"]
         self.credentials = self.get_credentials()
 
     def get_credentials(self):
+        """Retrieves or creates OAuth credentials."""
         try:
             with open("token.json", "r") as token_file:
                 token = json.load(token_file)
@@ -45,7 +47,7 @@ class OAuth:
         return credentials
 
     def get_access_token(self):
-        # Obter um novo token de acesso
+        """Obtains a new access token using the refresh token."""
         response = requests.post(
             "https://www.googleapis.com/oauth2/v4/token",
             data={
@@ -62,4 +64,5 @@ class OAuth:
             raise Exception(f"Erro ao obter token de acesso: {response.status_code} - {response.content}")
 
     def build_service(self, service_name):
+        """Builds and returns a service object for the specified Google API."""
         return build(service_name, "v3", credentials=self.credentials)
