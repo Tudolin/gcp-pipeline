@@ -1,19 +1,20 @@
+# ytb_oauth.py
+
 import json
 
+import requests  # Importando a biblioteca requests
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
 
-# Classe OAuth
 class OAuth:
     def __init__(self, client_id, client_secret):
         self.client_id = client_id
         self.client_secret = client_secret
-        self.scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+        self.scopes = ["https://www.googleapis.com/auth/yt-analytics.readonly"]
         self.credentials = self.get_credentials()
 
-    # Obter credenciais (melhorar segurança)
     def get_credentials(self):
         try:
             with open("token.json", "r") as token_file:
@@ -43,12 +44,22 @@ class OAuth:
                 json.dump(token, token_file)
         return credentials
 
-    # Obter token de acesso
     def get_access_token(self):
-        self.credentials.refresh()
-        return self.credentials.token
+        # Obter um novo token de acesso
+        response = requests.post(
+            "https://www.googleapis.com/oauth2/v4/token",
+            data={
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
+                "refresh_token": self.credentials.refresh_token,
+                "grant_type": "refresh_token"
+            }
+        )
+        if response.status_code == 200:
+            token_data = json.loads(response.content)
+            return token_data.get("access_token")
+        else:
+            raise Exception(f"Erro ao obter token de acesso: {response.status_code} - {response.content}")
 
-    # Criar serviço (API)
     def build_service(self, service_name):
         return build(service_name, "v3", credentials=self.credentials)
-
