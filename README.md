@@ -1,7 +1,10 @@
 # GCP - Pipeline
-# Conector - Youtube analytics API ![Youtube_logo](https://github.com/Tudolin/gcp-pipeline/assets/108036444/80ea2e32-0652-431a-a616-931278ec4947)
+# Conector - Youtube analytics API 
 
-![Badge em Desenvolvimento]<img src="[https://user-images.githubusercontent.com/105131652/186226747-206a5cb6-0390-445f-9ab7-aaa88827750e.jpg](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)" width="200" />
+![Youtube Logo](url da imagem gerado pelo serviço de hospedagem ou GitHub)
+
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+
 
 
 # Índice 
