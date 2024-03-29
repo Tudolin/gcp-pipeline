@@ -1,4 +1,4 @@
-# GCP - Pipeline
+# GCP - Data Pipeline
 # Conector - Youtube analytics API 
 
 ![Youtube Logo](https://github.com/Tudolin/gcp-pipeline/blob/main/img/ytb-logo.png)
