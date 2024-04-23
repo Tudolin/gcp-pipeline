@@ -33,6 +33,7 @@ Esse projeto tem o objetivo de realizar a extração, transformação e o carreg
 
 > pip install google-cloud-storage
 
+Também será necessário ter instalado o [Google CLI](https://cloud.google.com/docs/authentication/provide-credentials-adc?hl=pt-br#how-to) e configurar sua SDK.
 
 # Guia de Uso
 
