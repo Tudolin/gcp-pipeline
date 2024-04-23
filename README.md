@@ -29,7 +29,9 @@ Esse projeto tem o objetivo de realizar a extração, transformação e o carreg
 
 > pip install --upgrade google-auth-oauthlib
 
-> pip install google-api-python-client 
+> pip install google-api-python-client
+
+> pip install google-cloud-storage
 
 
 # Guia de Uso
